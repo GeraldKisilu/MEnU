@@ -1,38 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>To My Crush 💌</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="index.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To My Crush 💌</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css" />
+    <style>
+        .countdown {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-family: 'Pacifico', cursive;
+            color: #ff69b4;
+            background: #fff0f5;
+            padding: 6px 12px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+        }
+    </style>
 </head>
+
 <body>
-  <div class="background-animation"></div>
+    <div class="background-animation"></div>
 
-  <div class="parcel">
-    <div class="heart-seal" onclick="openLetter()">💖 Click to Open</div>
-    <div class="letter hidden" id="love-letter">
-      <div class="handwritten">
-        <p>Hey you,</p>
-        <p>I made this little space just for you a corner of the world where I could say what my words sometimes fumble to express.</p>
-        <p>You’ve been on my mind a lot lately, and there’s something about your smile, your energy, and the way you carry yourself that makes everything feel lighter.</p>
-        <p>I don’t know exactly when it started, but you’ve quietly become one of my favorite thoughts. Maybe this is bold or maybe it’s just honest, but I think you’re incredibly beautiful in your own natural, effortless way.</p>
-        <p>So here I am, writing you this small digital letter, not to impress you but to remind you that someone out here sees something truly special in you. No pressure, no expectations—just a quiet little truth from someone who’s been smiling more lately because of you.</p>
-      </div>
+    <!-- Countdown Timer Display -->
+    <div class="countdown">
+        <p id="timer">This message expires in: 04:00:00</p>
     </div>
-  </div>
 
-  <div class="flowers">
-    <a class="flower" href="flower1.html">🌹</a>
-    <a class="flower" href="flower2.html">🌷</a>
-    <a class="flower" href="flower3.html">🌼</a>
-  </div>
+    <div class="parcel">
+        <div class="heart-seal" onclick="openLetter()">💖 Click to Open</div>
+        <div class="letter hidden" id="love-letter">
+            <div class="handwritten">
+                <p>Hey you,</p>
+                <p>I made this little space just for you—a corner of the world where I could say what my words sometimes
+                    fumble to express.</p>
+                <p>You’ve been on my mind a lot lately, and there’s something about your smile, your energy, and the way
+                    you carry yourself that makes everything feel lighter.</p>
+                <p>I don’t know exactly when it started, but you’ve quietly become one of my favorite thoughts. Maybe
+                    this is bold or maybe it’s just honest, but I think you’re incredibly beautiful in your own natural,
+                    effortless way.</p>
+                <p>So here I am, writing you this small digital letter—not to impress you but to remind you that
+                    someone out here sees something truly special in you. No pressure, no expectations—just a quiet
+                    little truth from someone who’s been smiling more lately because of you.</p>
+            </div>
+        </div>
+    </div>
 
-  <script>
-    function openLetter() {
-      document.getElementById('love-letter').classList.remove('hidden');
-    }
-  </script>
+    <div class="flowers">
+        <a class="flower" href="flower1.html">🌹</a>
+        <a class="flower" href="flower2.html">🌷</a>
+        <a class="flower" href="flower3.html">🌼</a>
+    </div>
+
+    <script>
+        function openLetter() {
+            document.getElementById('love-letter').classList.remove('hidden');
+        }
+
+        // Countdown timer (4 hours)
+        const timerElement = document.getElementById('timer');
+        const endTime = new Date().getTime() + 4 * 60 * 60 * 1000; // 4 hours
+
+        const countdown = setInterval(() => {
+            const now = new Date().getTime();
+            const timeLeft = endTime - now;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                document.body.innerHTML = `
+          <div style="text-align:center; padding: 60px; font-family: 'Pacifico', cursive; color: #ff69b4;">
+            <h1>This message has expired 💌</h1>
+            <p>But the feeling? Still timeless.</p>
+          </div>`;
+                return;
+            }
+
+            const hours = String(Math.floor(timeLeft / (1000 * 60 * 60))).padStart(2, '0');
+            const minutes = String(Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            const seconds = String(Math.floor((timeLeft % (1000 * 60)) / 1000)).padStart(2, '0');
+
+            timerElement.innerText = `This letter expires in: ${hours}:${minutes}:${seconds}`;
+        }, 1000);
+    </script>
 </body>
+
 </html>
+<!-- Compare this snippet from index.css: --> 

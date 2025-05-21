@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To My Crush 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <div class="background-animation"></div>
+
+  <div class="parcel">
+    <div class="heart-seal" onclick="openLetter()">💖 Click</div>
+    <div class="letter hidden" id="love-letter">
+      <div class="handwritten">
+        <p>Hey Miss,</p>
+        <p>
+          I made this little space just for you a corner of the world where I could say what my words sometimes fumble to express.
+          You’ve been on my mind a lot lately, and there’s something about your smile, your energy, and the way you carry yourself that makes everything feel lighter.
+        </p>
+        <p>
+          I don’t know exactly when it started, but you’ve quietly become one of my favorite thoughts. Maybe this is bold or maybe it’s just honest, but I think you’re incredibly beautiful in your own natural, effortless way.
+        </p>
+        <p>
+          So here I am, writing you this small digital letter, not to impress you but to remind you that someone out here sees something truly special in you.
+          No pressure, no expectations just a quiet little truth from someone who’s been smiling more lately because of you.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flowers">
+    <div class="flower" onclick="revealMessage(0)">🌹</div>
+    <div class="flower" onclick="revealMessage(1)">🌷</div>
+    <div class="flower" onclick="revealMessage(2)">🌼</div>
+  </div>
+
+  <div class="messages" id="messages">
+    <p class="message hidden">I hope you smell like roses 🌹</p>
+    <p class="message hidden">L is for love not lust ❤️</p>
+    <p class="message hidden">I wanna hug you so tight we both forget we have problems 🤗</p>
+  </div>
+
+  <script>
+    function openLetter() {
+      document.getElementById('love-letter').classList.remove('hidden');
+    }
+
+    function revealMessage(index) {
+      const messages = document.querySelectorAll('.message');
+      messages[index].classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
